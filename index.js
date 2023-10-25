@@ -1,20 +1,29 @@
 import express from 'express'
-
-import fs from 'fs/promises'
+import convertor from 'convert-svg-to-png'
 import Robot from './Robot.js'
 
 
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
     let seed = req.query.seed
+    let type = req.query.type
 
 	let robot = new Robot(seed)
 	let svg = robot.draw()
 
-    res.set("Content-Type", "image/svg+xml")
-    res.send(Buffer.from(svg))
+    if (type == "png") {
+        res.set("Content-type", "image/png")
+        
+        let buffer = await convertor.convert(svg)
+        res.send(buffer)
+    } 
+    
+    else {
+        res.set("Content-Type", "image/svg+xml")
+        res.send(Buffer.from(svg))
+    }
 })
 
 app.listen(port, () => {
