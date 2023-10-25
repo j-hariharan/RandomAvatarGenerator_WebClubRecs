@@ -1,32 +1,43 @@
 import { createSVGWindow } from 'svgdom'
 import { SVG, registerWindow } from '@svgdotjs/svg.js'
+import gen from 'random-seed'
 
-// returns a window with a document and an svg root node
-const window = createSVGWindow()
-const document = window.document
 
-registerWindow(window, document)
 
+let randRGB = (seed, prop) => {
+    let r = rand(seed + prop, "r", 0, 255)
+    let g = rand(seed + prop, "g", 0, 255)
+    let b = rand(seed + prop, "b", 0, 255)
+
+    return `rgb(${r}, ${g}, ${b})`
+}
+
+let rand = (seed, prop, min, max) => {
+    let rand = gen.create(seed + prop)
+    let res = rand.intBetween(min, max)
+    rand.done()
+    return res
+}
 
 export default class Robot {
-    constructor () {
-        this.robot = SVG()
+    constructor (seed) {
+        if (!seed) seed = Math.random().toString()
 
-        this.face = {
-            w: 70,
-            h: 60,
-            color: "black"
-        }
+        this.face = {}
 
-        this.neck = {
-            w: 30,
-            h: 10,
-            color: "red"
-        }
+        this.face.w = rand(seed, "facew", 40, 70)
+        this.face.h = rand(seed, "faceh", 30, this.face.w + 1)
+        this.face.color = randRGB(seed, "facecolor")
 
-        this.body = {
-            w: 150
-        }
+        this.neck = {}
+
+        this.neck.w = rand(seed, "neckw", 15, this.face.w/2)
+        this.neck.h = rand(seed, "neckh", 5, this.face.h/3)
+        this.neck.color = randRGB(seed, "neckcolor")
+
+        this.body = {}
+
+        this.body.w = rand(seed, "bodyw", this.face.w + 20, 160)
 
         // type 0: round
         // type 1: square
@@ -40,6 +51,10 @@ export default class Robot {
     }
 
     draw () {
+        const window = createSVGWindow()
+        const document = window.document
+        
+        registerWindow(window, document)
         this.robot = SVG(document.documentElement).size(200, 200)
 
         let faceTop = 100 - this.face.h
