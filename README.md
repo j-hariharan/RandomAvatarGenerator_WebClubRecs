@@ -1,4 +1,5 @@
 # RoboAvatar
+#### (Random Avatar Generator / Random Character Generator)
 
 An API for generating random robo-themed avatars!
 
