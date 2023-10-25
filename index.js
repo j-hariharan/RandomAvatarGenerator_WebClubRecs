@@ -6,7 +6,9 @@ import Robot from './Robot.js'
 const app = express()
 const port = 3000
 
-app.get('/', async (req, res) => {
+app.use(express.static("static"))
+
+app.get('/generate', async (req, res) => {
     let seed = req.query.seed
     let type = req.query.type
 
@@ -15,7 +17,7 @@ app.get('/', async (req, res) => {
 
     if (type == "png") {
         res.set("Content-type", "image/png")
-        
+
         let buffer = await convertor.convert(svg)
         res.send(buffer)
     } 

@@ -57,7 +57,7 @@ export default class Robot {
         registerWindow(window, document)
         this.robot = SVG(document.documentElement).size(200, 200)
 
-        let faceTop = 100 - this.face.h
+        let faceTop = (100 - this.face.h)/2
         let faceLeft = (200 - this.face.w)/2
         
         let face = this.robot.rect(this.face.w, this.face.h)
@@ -75,7 +75,7 @@ export default class Robot {
 
         let bodyLeft = (200 - this.body.w)/2
         let bodyTop = neckTop + this.neck.h
-        let bodyHeight = 200 - bodyTop
+        let bodyHeight = 200 - bodyTop - faceTop
 
         let body =  this.robot.rect(this.body.w, bodyHeight)
         body.move(bodyLeft, bodyTop)

@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+
+
+
+.cover {
+    height: 100vh;
+    max-height: 500px;
+    background-color: lightblue;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.cover .left {
+    width: 45%;
+}
+
+.cover .left h1 {
+    font-size: 60px;
+    font-weight: 900;
+}
+
+.cover .left p {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.cover .right {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover .right img {
+    width: 100%;
+    max-width: 400px;
+}
