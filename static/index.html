@@ -18,5 +18,23 @@
             <img src="/generate" alt="">
         </div>
     </div>
+
+    <div class="content">
+        <h1>Get Started</h1>
+        <p>RoboAvatar API is very simple to use.</p>
+
+        <h2>Base URL</h2>
+        <div class="code">http://localhost:3000/</div>
+
+        <h2>API Endpoint</h2>
+        <div class="endpoint">
+            <div class="code">/generate</div>
+            <h3>Query Params:</h3>
+            <ul>
+                <li><b>seed</b> - the seed used to generate the pseudo-random avatar. The same seed always produces the same avatar! Omitting this param will give a random avatar each time.</li>
+                <li><b>type</b> - specifies the image format to be generated. "png" and "svg" are the supported values. Omitting this defaults to svg outputs.</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

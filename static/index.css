@@ -47,3 +47,45 @@ body {
     width: 100%;
     max-width: 400px;
 }
+
+
+.content {
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+.content .code {
+    background-color: rgb(237, 241, 245);
+    padding: 20px 30px;
+    border-radius : 10px;
+    margin: 20px;
+}
+
+.content h1 {
+    font-size: 35px;
+    font-weight: 800;
+    margin: 10px 0px;
+}
+
+.content p {
+    font-size: 20px;
+}
+
+.content h2 {
+    margin: 50px 0px 10px 0px;
+}
+
+
+.content .endpoint h3 {
+    margin-left: 20px;
+    font-size: 22px;
+}
+
+.content .endpoint ul {
+    margin-left: 40px;
+    font-size: 20px;
+}
+
+.content .endpoint ul li {
+    margin: 20px 0px;
+}
