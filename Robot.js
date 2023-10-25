@@ -14,7 +14,7 @@ export default class Robot {
 
         this.face = {
             w: 70,
-            h: 40,
+            h: 60,
             color: "black"
         }
 
@@ -25,14 +25,24 @@ export default class Robot {
         }
 
         this.body = {
-            w: 150,
+            w: 150
+        }
+
+        // type 0: round
+        // type 1: square
+        // type 2: line
+        // type 3: cross
+
+        this.eyes = {
+            type: 0,
+            color: "white"
         }
     }
 
     draw () {
         this.robot = SVG(document.documentElement).size(200, 200)
 
-        let faceTop = (200 - this.face.h)/2
+        let faceTop = 100 - this.face.h
         let faceLeft = (200 - this.face.w)/2
         
         let face = this.robot.rect(this.face.w, this.face.h)
@@ -55,6 +65,19 @@ export default class Robot {
         let body =  this.robot.rect(this.body.w, bodyHeight)
         body.move(bodyLeft, bodyTop)
         body.fill(this.face.color)
+
+
+        let eyeLeft = faceLeft + this.face.w/3 - 5
+        let eyeRight = faceLeft + 2*this.face.w/3 - 5
+        let eyeTop = faceTop + this.face.h/3
+
+        let eye1 = this.robot.circle(10)
+        eye1.fill(this.eyes.color)
+        eye1.move(eyeLeft, eyeTop)
+
+        let eye2 = this.robot.circle(10)
+        eye2.fill(this.eyes.color)
+        eye2.move(eyeRight, eyeTop)
 
         return this.robot.svg()
     }
